@@ -1,0 +1,16 @@
+local url = "https://example.com/file.txt"  -- Replace with your file URL
+local fileName = "downloadedFile.txt"       -- Name of the file to save
+
+-- This is Synapse X API-specific
+local httpService = game:GetService("HttpService")
+local response = syn.request({
+    Url = url,
+    Method = "GET"
+})
+
+if response.Success then
+    writefile(fileName, response.Body)  -- Saves the file on the client's machine
+    print("File downloaded successfully!")
+else
+    print("Failed to download file.")
+end
